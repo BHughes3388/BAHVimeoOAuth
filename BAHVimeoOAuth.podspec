@@ -10,18 +10,18 @@
 Pod::Spec.new do |s|
   s.name             = "BAHVimeoOAuth"
   s.version          = "0.1.0"
-  s.summary          = "A short description of BAHVimeoOAuth."
+  s.summary          = "Simple Vimeo OAuth 2.0 client"
   s.description      = <<-DESC
-                       An optional longer description of BAHVimeoOAuth
+                       A very easy, simple to use, specific to Vimeo OAuth 2.0 client.
 
                        * Markdown format.
                        * Don't worry about the indent, we strip it!
                        DESC
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/BAHVimeoOAuth"
+  s.homepage         = "https://github.com/BHughes3388/BAHVimeoOAuth"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "BHughes3388" => "BHughes3388@gmail.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/BAHVimeoOAuth.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/BHughes3388/BAHVimeoOAuth.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '7.0'
