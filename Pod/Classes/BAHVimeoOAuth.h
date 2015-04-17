@@ -20,10 +20,19 @@
 // In this header, you should import all the public headers of your framework using statements like #import <BAHVimeoOAuth/PublicHeader.h>
 
 
+typedef void (^VimeoCompletelion)(BOOL success, NSString *VimeoToken);
+
 @interface BAHVimeoOAuth : NSObject
 
+@property(copy, nonatomic)VimeoCompletelion completelion;
 
-+ (void)authenticateWithVimeoUsingVimeoClientID:(NSString*)vimeoClientID vimeoAuthorizationHeader:(NSString*)vimeoAuthorizationHeader scope:(NSString*)scope state:(NSString*)state appURLCallBack:(NSString*)appURLCallBack sender:(id)sender;
+- (void)authenticateWithVimeoUsingVimeoClientID:(NSString*)vimeoClientID
+                       vimeoAuthorizationHeader:(NSString*)vimeoAuthorizationHeader
+                                          scope:(NSString*)scope
+                                          state:(NSString*)state
+                                 appURLCallBack:(NSString*)appURLCallBack
+                                 viewController:(id)viewController
+                                               :(void (^)(BOOL success, NSString *vimeoToken))completelion;
 
 
 @end

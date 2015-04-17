@@ -16,12 +16,9 @@
 
 @implementation BAHVimeoOAuth : NSObject
 
-static NSString *vimeoClientID = @"b2c5f0c7e7672375f619868373a756293a89569a";
 static NSString *vimeoAuthURL = @"https://api.vimeo.com/oauth/authorize";
-static NSString *appURLCallBack = @"BladerFeed://";
- 
 
-+ (void)authenticateWithVimeoUsingVimeoClientID:(NSString*)vimeoClientID vimeoAuthorizationHeader:(NSString*)vimeoAuthorizationHeader scope:(NSString*)scope state:(NSString*)state appURLCallBack:(NSString*)appURLCallBack sender:(id)sender;{
+- (void)authenticateWithVimeoUsingVimeoClientID:(NSString *)vimeoClientID vimeoAuthorizationHeader:(NSString *)vimeoAuthorizationHeader scope:(NSString *)scope state:(NSString *)state appURLCallBack:(NSString *)appURLCallBack viewController:(id)viewController :(void (^)(BOOL, NSString *))completelion{
     
     if (!scope) {
         scope = @"public";
@@ -34,13 +31,17 @@ static NSString *appURLCallBack = @"BladerFeed://";
     
     UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:OAuthController];
     
-    [sender presentViewController:navController animated:YES completion:^{
+    [viewController presentViewController:navController animated:YES completion:^{
         OAuthController.vimeoAuthorizationHeader = vimeoAuthorizationHeader;
         OAuthController.uriCallBack = appURLCallBack;
         OAuthController.state = state;
+        OAuthController.vimeoSender = self;
         [OAuthController.oAuthWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:authenticateURLString]]];
         
     }];
+    
+    self.completelion = completelion;
+    
 }
 
 @end

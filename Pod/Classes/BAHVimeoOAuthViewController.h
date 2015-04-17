@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import "BAHVimeoOAuth.h"
 
 
 @interface BAHVimeoOAuthViewController : UIViewController<UIWebViewDelegate>
+
+@property (nonatomic, strong)id vimeoSender;
 
 @property (nonatomic, strong)UIWebView *oAuthWebView;
 

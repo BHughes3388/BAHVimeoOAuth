@@ -14,17 +14,30 @@
 
 @implementation BAHVimeoOAuthViewController
 
+static NSString *vimeoTokenURL = @"https://api.vimeo.com/oauth/access_token";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     [self.navigationController.navigationBar setTranslucent:NO];
     
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:26.0f/225 green:183.0f/225 blue:234.0f/225 alpha:1.0f]];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:26.0f/255 green:183.0f/255 blue:234.0f/255 alpha:1.0f]];
     
+    // Vimeo logo for navigationbar
+    UIImageView *logo = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 200, 80)];
+    [logo setTintColor:[UIColor whiteColor]];
+    [logo setContentMode:UIViewContentModeScaleAspectFit];
+    [logo setImage:[[UIImage imageNamed:@"vimeo_logo.jpg"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+    
+    [self.navigationItem setTitleView:logo];
+    
+    // Setup webview for user signin and confirm use of your app
     self.oAuthWebView = [[UIWebView alloc]initWithFrame:self.view.frame];
     [self.oAuthWebView setDelegate:self];
-    
+    self.oAuthWebView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     [self.view addSubview:self.oAuthWebView];
 }
 
@@ -37,14 +50,16 @@
     
     NSString *URLString = [[request URL] absoluteString];
     
+    // Here we check the request for the presence of the "state=" to know we have the correct request
     if ([URLString rangeOfString:@"state="].location != NSNotFound) {
-        static NSString *vimeoTokenURL = @"https://api.vimeo.com/oauth/access_token";
         
         NSArray *reply= [URLString componentsSeparatedByString:@"="];
-        
+    
         NSString *code = reply.lastObject;
         NSString *state = [[reply[1] componentsSeparatedByString:@"&"] firstObject] ;
         
+        
+        //we check to make sure the state is equal to the state we specified.
         if ([state isEqualToString:self.state]) {
             
             NSString *post = [NSString stringWithFormat:@"grant_type=authorization_code&redirect_uri=%@&code=%@", self.uriCallBack, code];
@@ -68,31 +83,23 @@
                 
                 NSString *token = [json objectForKey:@"access_token"];
                 
-                [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"vimeo_token"];
-                
-                [[NSUserDefaults standardUserDefaults] synchronize];
+                if (token) {
+                    
+                    BAHVimeoOAuth *vimeoOAuth = (BAHVimeoOAuth *)self.vimeoSender;
+                    vimeoOAuth.completelion(YES, token);
+                    [self dismissViewControllerAnimated:YES completion:nil];
 
-                [self dismissViewControllerAnimated:YES completion:nil];
-                
+                }else{
+                    //TODO:Handle Error
+                }
                 
             }];
-            
+        
         }
         
     }
     
     return YES;
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

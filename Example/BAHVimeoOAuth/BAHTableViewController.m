@@ -28,37 +28,32 @@
     //if scope is set to nil it was automatically be set to default
     //static NSString *scope = @"";
     
-    //Authenticate with vimeo using your vimeo app clientID, Authorization Header, and Redirect URI
-    [BAHVimeoOAuth authenticateWithVimeoUsingVimeoClientID:vimeoClientID
-                                  vimeoAuthorizationHeader:vimeoAuthorizationHeader
-                                                     scope:nil
-                                                     state:state
-                                            appURLCallBack:appURLCallBack
-                                                    sender:self];
+    BAHVimeoOAuth *vimeoOAuth = [[BAHVimeoOAuth alloc]init];
     
-    //set an observer for when the token is saved into the users defaults
-    [[NSUserDefaults standardUserDefaults] addObserver:self
-                                            forKeyPath:@"vimeo_token"
-                                               options:NSKeyValueObservingOptionNew
-                                               context:NULL];
-    
-    
-    
-    
-    videoNames = [[NSMutableArray alloc]init];
-}
+    [vimeoOAuth authenticateWithVimeoUsingVimeoClientID:vimeoClientID
+                               vimeoAuthorizationHeader:vimeoAuthorizationHeader
+                                                  scope:nil
+                                                  state:state
+                                         appURLCallBack:appURLCallBack
+                                         viewController:self
+                                                       :^(BOOL success, NSString *vimeoToken) {
+                                                     
+                                                     
+                                                     if (success) {
+                                                         
+                                                         [[NSUserDefaults standardUserDefaults] setObject:vimeoToken forKey:@"vimeo_token"];
+                                                         [[NSUserDefaults standardUserDefaults] synchronize];
+                                                         
+                                                         videoNames = [[NSMutableArray alloc]init];
+                                                         
+                                                         [self requestVideosFromVimeo];
+                                                     }
 
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
+                                                     
+                                                     
     
-    if ([keyPath isEqualToString:@"vimeo_token"]) {
-        
-        //this is called when the authenication is complete
-        //you can get the token but calling [[NSUserDefaults standardUserDefaults] objectForKey:@"vimeo_token"]
-        //do whatever you want to do with the token from here
-        [self requestVideosFromVimeo];
-        
-    }
+}];
+    
 }
 
 - (void)requestVideosFromVimeo{
