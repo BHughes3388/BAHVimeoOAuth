@@ -1,0 +1,16 @@
+//
+//  BAHViewController.h
+//  BAHVimeoOAuth
+//
+//  Created by BHughes on 4/25/15.
+//  Copyright (c) 2015 BHughes3388. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "BAHTableViewController.h"
+#import "BAHVimeoOAuth.h"
+
+@interface BAHViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *requestButton;
+
+@end

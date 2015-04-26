@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
 
                        DESC
   s.homepage         = "https://github.com/BHughes3388/BAHVimeoOAuth"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.screenshots     = "http://img.photobucket.com/albums/v235/rx7anator/Mobile%20Applications/6bffa370-627d-43b7-8128-136d11700b27_zpsgdk1fbjo.png"
   s.license          = 'MIT'
   s.author           = { "BHughes3388" => "BHughes3388@gmail.com" }
   s.source           = { :git => "https://github.com/BHughes3388/BAHVimeoOAuth.git", :tag => s.version.to_s }

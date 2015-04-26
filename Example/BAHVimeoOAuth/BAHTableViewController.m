@@ -19,47 +19,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //set each of these to the credientials in your Vimeo App
-    static NSString *vimeoClientID = @"fb9dfd84606d7e1f05620ab1a5cc7d6e37242a46";
-    //Redirect URI doesn't actually have to be set in info.plist, just has to match what it is in your Vimeo App
-    static NSString *appURLCallBack = @"BAHVimeoOAuth://";
-    static NSString *vimeoAuthorizationHeader = @"Basic ZmI5ZGZkODQ2MDZkN2UxZjA1NjIwYWIxYTVjYzdkNmUzNzI0MmE0Njo4MTJiYzMxNjcwZTk4MTc5MTU1NThmYTMzNDliOWQwMTFmZDBlNGZi";
-    static NSString *state = @"BAHVimeoOAuth";
-    //if scope is set to nil it was automatically be set to default
-    //static NSString *scope = @"";
+    videoNames = [[NSMutableArray alloc]init];
     
-    BAHVimeoOAuth *vimeoOAuth = [[BAHVimeoOAuth alloc]init];
-    
-    [vimeoOAuth authenticateWithVimeoUsingVimeoClientID:vimeoClientID
-                               vimeoAuthorizationHeader:vimeoAuthorizationHeader
-                                                  scope:nil
-                                                  state:state
-                                         appURLCallBack:appURLCallBack
-                                         viewController:self
-                                                       :^(BOOL success, NSString *vimeoToken) {
-                                                     
-                                                     
-                                                     if (success) {
-                                                         
-                                                         [[NSUserDefaults standardUserDefaults] setObject:vimeoToken forKey:@"vimeo_token"];
-                                                         [[NSUserDefaults standardUserDefaults] synchronize];
-                                                         
-                                                         videoNames = [[NSMutableArray alloc]init];
-                                                         
-                                                         [self requestVideosFromVimeo];
-                                                     }
-
-                                                     
-                                                     
-    
-}];
-    
+    [self requestVideosFromVimeo];
 }
 
 - (void)requestVideosFromVimeo{
     
     //this is just a sample on how to get data from Vimeo usint AFNetworking
-    
     NSString *tokenString = [[NSUserDefaults standardUserDefaults] objectForKey:@"vimeo_token"];
     
     NSLog(@"tokenstring %@", tokenString);
@@ -69,7 +36,6 @@
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:newURL]];
     
     [request setHTTPMethod:@"GET"];
-    
     
     AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
@@ -95,6 +61,7 @@
         NSLog(@"Error: %@", error);
         
     }];
+    
     [[NSOperationQueue mainQueue] addOperation:op];
 
     
