@@ -5,16 +5,13 @@
 [![License](https://img.shields.io/cocoapods/l/BAHVimeoOAuth.svg?style=flat)](http://cocoadocs.org/docsets/BAHVimeoOAuth)
 [![Platform](https://img.shields.io/cocoapods/p/BAHVimeoOAuth.svg?style=flat)](http://cocoadocs.org/docsets/BAHVimeoOAuth)
 
-## Usage
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
-
 ## Preview
 
 ![](http://img.photobucket.com/albums/v235/rx7anator/Mobile%20Applications/6bffa370-627d-43b7-8128-136d11700b27_zpsgdk1fbjo.png) ![](http://img.photobucket.com/albums/v235/rx7anator/Mobile%20Applications/VimeoOAuth_zpsl69a72mp.gif)
 
+## Usage
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Installation
 
