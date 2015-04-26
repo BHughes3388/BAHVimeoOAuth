@@ -25,7 +25,7 @@ Import
 #import "BAHVimeoOAuth.h"
 ```
 
-Where ever you would like to get the users videos 
+Where ever you would like your user to login to vimeo and retrieve a token 
 ```Objective-C
 BAHVimeoOAuth *vimeoOAuth = [[BAHVimeoOAuth alloc]init];
 
@@ -36,7 +36,6 @@ BAHVimeoOAuth *vimeoOAuth = [[BAHVimeoOAuth alloc]init];
                                     appURLCallBack:appURLCallBack
                                     viewController:self
                                                   :^(BOOL success, NSString *vimeoToken) {
-
 
                                                     if (success) {
 
