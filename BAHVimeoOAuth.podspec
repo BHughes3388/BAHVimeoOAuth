@@ -14,8 +14,6 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
                        A very easy, simple to use, specific to Vimeo OAuth 2.0 client.
 
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
                        DESC
   s.homepage         = "https://github.com/BHughes3388/BAHVimeoOAuth"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"

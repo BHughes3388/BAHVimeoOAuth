@@ -18,6 +18,13 @@ it, simply add the following line to your Podfile:
 
     pod "BAHVimeoOAuth"
 
+## Setup
+
+Import
+```Objective-C
+#import "BAHVimeoOAuth.h"
+```
+
 ## Author
 
 BHughes3388, BHughes3388@gmail.com

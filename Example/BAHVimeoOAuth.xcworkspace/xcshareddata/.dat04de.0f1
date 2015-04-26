@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1ADEC99C-00FE-40D6-BF03-DC7ACC635C63</string>
+	<key>IDESourceControlProjectName</key>
+	<string>BAHVimeoOAuth</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E78A588FE5FBEF010E278301C5EE681C284233A1</key>
+		<string>https://github.com/BHughes3388/BAHVimeoOAuth.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Example/BAHVimeoOAuth.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E78A588FE5FBEF010E278301C5EE681C284233A1</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/BHughes3388/BAHVimeoOAuth.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E78A588FE5FBEF010E278301C5EE681C284233A1</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E78A588FE5FBEF010E278301C5EE681C284233A1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BAHVimeoOAuth</string>
+		</dict>
+	</array>
+</dict>
+</plist>
