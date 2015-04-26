@@ -29,8 +29,6 @@
     //this is just a sample on how to get data from Vimeo usint AFNetworking
     NSString *tokenString = [[NSUserDefaults standardUserDefaults] objectForKey:@"vimeo_token"];
     
-    NSLog(@"tokenstring %@", tokenString);
-    
     NSString *newURL = [NSString stringWithFormat:@"https://api.vimeo.com/me/videos?access_token=%@",tokenString];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:newURL]];

@@ -26,7 +26,6 @@ static NSString *vimeoAuthURL = @"https://api.vimeo.com/oauth/authorize";
     
     NSString *authenticateURLString = [NSString stringWithFormat:@"%@?client_id=%@&response_type=code&state=%@&scope=%@&redirect_uri=%@", vimeoAuthURL, vimeoClientID, state, scope, appURLCallBack];
     
-    NSLog(@"authenicatestring %@", authenticateURLString);
     BAHVimeoOAuthViewController *OAuthController = [[BAHVimeoOAuthViewController alloc]init];
     
     UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:OAuthController];
