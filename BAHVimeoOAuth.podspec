@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "BAHVimeoOAuth"
-  s.version          = "0.1.0"
+  s.version          = "0.1.1"
   s.summary          = "Simple Vimeo OAuth 2.0 client"
   s.description      = <<-DESC
                        A very easy, simple to use, specific to Vimeo OAuth 2.0 client.
