@@ -25,6 +25,33 @@ Import
 #import "BAHVimeoOAuth.h"
 ```
 
+Where ever you would like to get the users videos 
+```Objective-C
+BAHVimeoOAuth *vimeoOAuth = [[BAHVimeoOAuth alloc]init];
+
+[vimeoOAuth authenticateWithVimeoUsingVimeoClientID:vimeoClientID
+vimeoAuthorizationHeader:vimeoAuthorizationHeader
+scope:nil
+state:state
+appURLCallBack:appURLCallBack
+viewController:self
+:^(BOOL success, NSString *vimeoToken) {
+
+
+if (success) {
+
+//Optional saving the returned token to NSUserDefaults
+[[NSUserDefaults standardUserDefaults] setObject:vimeoToken forKey:@"vimeo_token"];
+[[NSUserDefaults standardUserDefaults] synchronize];
+
+//Do what ever you need to do with the returned token
+//[self requestVideosFromVimeo];
+}
+
+}];
+
+```
+
 ## Author
 
 BHughes3388, BHughes3388@gmail.com
