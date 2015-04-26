@@ -30,26 +30,26 @@ Where ever you would like to get the users videos
 BAHVimeoOAuth *vimeoOAuth = [[BAHVimeoOAuth alloc]init];
 
 [vimeoOAuth authenticateWithVimeoUsingVimeoClientID:vimeoClientID
-vimeoAuthorizationHeader:vimeoAuthorizationHeader
-scope:nil
-state:state
-appURLCallBack:appURLCallBack
-viewController:self
-:^(BOOL success, NSString *vimeoToken) {
+                           vimeoAuthorizationHeader:vimeoAuthorizationHeader
+                                              scope:nil
+                                              state:state
+                                    appURLCallBack:appURLCallBack
+                                    viewController:self
+                                                  :^(BOOL success, NSString *vimeoToken) {
 
 
-if (success) {
+                                                    if (success) {
 
-//Optional saving the returned token to NSUserDefaults
-[[NSUserDefaults standardUserDefaults] setObject:vimeoToken forKey:@"vimeo_token"];
-[[NSUserDefaults standardUserDefaults] synchronize];
+                                                        //Optional saving the returned token to NSUserDefaults
+                                                        [[NSUserDefaults standardUserDefaults] setObject:vimeoToken forKey:@"vimeo_token"];
+                                                        [[NSUserDefaults standardUserDefaults] synchronize];
 
-//Do what ever you need to do with the returned token
-//[self requestVideosFromVimeo];
-}
+                                                        //Do what ever you need to do with the returned token
+                                                        //[self requestVideosFromVimeo];
 
-}];
+                                                        }
 
+                                                    }];
 ```
 
 ## Author
